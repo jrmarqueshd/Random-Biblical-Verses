@@ -12,7 +12,6 @@ gulp.task("html", ()=>{
         .pipe(htmlMin({
             collapseWhitespace: true
         }))
-        .pipe(rename("index.min.html"))
         .pipe(gulp.dest("./"))
         .pipe(livereload(console.log("Watching HTML...")));
 })
