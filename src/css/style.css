@@ -14,7 +14,7 @@
 
     --font-size-default: 18px;
 
-    --card-width: 375px;
+    --card-width: 400px;
 }
 
 html, *{
@@ -66,7 +66,7 @@ article{
 }
 
 body section.main-content{
-    height: 100vh;
+    height: 494px;
     margin: 15px;
     width: 100%;
         max-width: var(--card-width);
@@ -80,14 +80,15 @@ body section.main-content.card{
 body section.main-content header{
     background-color: var(--header-card-card-background);
     filter: blur(3px);
-    height: 30vh;
+    height: auto;
+    padding: 40px 0;
     width: 100%;
 }
 
 article{
     background-color: var(--card-background);
-    height: 70vh;
-    padding: 15px;
+    height: auto;
+    padding: 15px 50px;
     position: relative;
 }
 
@@ -99,12 +100,11 @@ body section.main-content article h1{
     background-color: var(--h1-background-color);
     border: 1px solid var(--h1-border-color);
     border-radius: 100%;
-    font-size: calc(var(--font-size-default) * 5);
-    height: calc(var(--card-width) / 3);
+    font-size: 5em;
+    height: 150px;
     position: absolute;
-        top: calc(30vh * -.40);
-        left: calc((var(--card-width) - 125px) / 2);
-    width: calc(var(--card-width) / 3);
+        top: -75px;
+    width: 150px;
 }
 
 article .-quotation-marks{
