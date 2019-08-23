@@ -5,6 +5,7 @@ const livereload = require("gulp-livereload");
 const cleanCSS = require("gulp-clean-css");
 const htmlMin = require("gulp-htmlmin");
 const jsMinify = require("gulp-minify");
+const jsonMinify = require("gulp-jsonmin");
 
 gulp.task("html", ()=>{
     livereload.listen();
@@ -14,7 +15,7 @@ gulp.task("html", ()=>{
         }))
         .pipe(gulp.dest("./"))
         .pipe(livereload(console.log("Watching HTML...")));
-})
+});
 
 gulp.task("css", ()=>{
     livereload.listen();
@@ -25,7 +26,7 @@ gulp.task("css", ()=>{
         .pipe(rename("style.min.css"))
         .pipe(gulp.dest("./assets/css/"))
         .pipe(livereload(console.log("Watching CSS...")));
-})
+});
 
 gulp.task("js", ()=>{
     livereload.listen();
@@ -40,7 +41,13 @@ gulp.task("js", ()=>{
         }))
         .pipe(gulp.dest("./assets/js/"))
         .pipe(livereload(console.log("Watching JS...")));
+});
+
+gulp.task("minifyJson", ()=>{
+    return gulp.src("./src/data/*json")
+        .pipe(jsonMinify())
+        .pipe(gulp.dest("./assets/data/"));
 })
 
-
 gulp.task("default", gulp.parallel("css", "html", "js"));
+gulp.task("json", gulp.parallel("minifyJson"));

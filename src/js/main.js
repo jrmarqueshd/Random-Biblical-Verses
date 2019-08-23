@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
         return Math.floor(Math.random() * (lastBook - 0 + 1) - 0 );
     }
 
-    fetch("../src/data/bible.json")
+    fetch("../assets/data/bible.json")
         .then((resp) => {
             return resp.json();
         })
@@ -17,16 +17,14 @@ window.addEventListener("load", () => {
             let getRandomBook = GenerateRandomVerses(allBooks);
             const allChapters = (bible[getRandomBook].chapters.length - 1);
             let getRandomChapter = GenerateRandomVerses(allChapters);
-            const allVerses = (bible[getRandomBook].chapters[getRandomChapter].length);
+            const allVerses = (bible[getRandomBook].chapters[getRandomChapter].length - 1);
             let getRandomVerse = GenerateRandomVerses(allVerses);
-
             let abbrev = bible[getRandomBook].abbrev;
             let bookName = bible[getRandomBook].name;
             let chapter = getRandomChapter + 1;
             let verse = getRandomVerse + 1;
             let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
 
-            // console.log(name, chapter, verse, verseContent);
 
             $abbrevBookContent.innerText = abbrev;
             $bookContent.innerText = bookName;
