@@ -189,6 +189,19 @@ article h2{
     font-weight: bold;
 }
 
+a.search-random-verse{
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    color: peru;
+    transition: all 98.7ms ease-in;
+}
+
+a.search-random-verse:hover{
+    background-color: peru;
+    color: white;
+}
+
 @media screen and (max-width: 400px){
     article {
         padding: 15px 15px 25px;
