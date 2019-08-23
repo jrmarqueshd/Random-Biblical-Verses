@@ -1,11 +1,13 @@
 :root{
     --title-color: #141518;
     --content-color: #6B6B6B;
+    --content-color_with_opacity: rgba(107,107,107,0.5);
+    --background-color: rgba(255,255,255, .7);
 
     --card-background: rgba(255,255,255, .9);
     --header-card-card-background: rgba(255,255,255, .3);
 
-    --h1-background-color: linear-gradient(to bottom, var(--card-background) 50%, transparent 50%);
+    --h1-background-color: linear-gradient(to bottom, var(--card-background) 51%, transparent 49%);
     --h1-border-color: transparent;
 
     --shadow-card-color: rgba(0,0,0,0.4);
@@ -189,6 +191,14 @@ article h2{
     font-weight: bold;
 }
 
+article.off h1,
+article.off span,
+article.off p,
+article.off h2,
+article.off h3{
+    color: var(--content-color_with_opacity);
+}
+
 a.search-random-verse{
     background-color: white;
     padding: 15px 25px;
@@ -200,6 +210,31 @@ a.search-random-verse{
 a.search-random-verse:hover{
     background-color: peru;
     color: white;
+}
+
+@keyframes onShare{
+    0%{
+        height: 0;
+    }
+    
+    80%, 100%{
+        height: 100%;
+    }
+}
+
+.share{
+    background-color: var(--background-color);
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+        bottom: 0;
+        left: 0;
+    text-align: center;
+}
+
+.share.on{
+    animation: onShare 987ms ease-in-out;
+    height: 100%;
 }
 
 @media screen and (max-width: 400px){
