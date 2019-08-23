@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
             return resp.json();
         })
         .then((bible) => {
-            const allBooks = (bible.length - 1);
+            this.allBooks = (bible.length - 1);
             let getRandomBook = GenerateRandomVerses(allBooks);
             const allChapters = (bible[getRandomBook].chapters.length - 1);
             let getRandomChapter = GenerateRandomVerses(allChapters);
@@ -21,12 +21,17 @@ window.addEventListener("load", () => {
             let getRandomVerse = GenerateRandomVerses(allVerses);
 
             let abbrev = bible[getRandomBook].abbrev;
-            let name = bible[getRandomBook].name;
+            let bookName = bible[getRandomBook].name;
             let chapter = getRandomChapter + 1;
             let verse = getRandomVerse + 1;
             let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
 
-            console.log(name, chapter, verse, verseContent);
+            // console.log(name, chapter, verse, verseContent);
+
+            $abbrevBookContent.innerText = abbrev;
+            $bookContent.innerText = bookName;
+            $verseContent.innerText = verseContent;
+            $capVerContent.innerText = `${chapter}:${verse}`;
         })
         .catch((err) => {
             console.log(err);
