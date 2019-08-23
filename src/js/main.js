@@ -1,5 +1,8 @@
 window.addEventListener("load", () => {
-    let div = document.getElementById("content");
+    let $abbrevBookContent = document.getElementById("abbrevBookContent");
+    let $verseContent = document.getElementById("verseContent");
+    let $bookContent = document.getElementById("bookContent");
+    let $capVerContent = document.getElementById("capVerContent");
 
     function GenerateRandomVerses(lastBook) {
         return Math.floor(Math.random() * (lastBook - 0 + 1) - 0 );
@@ -17,12 +20,13 @@ window.addEventListener("load", () => {
             const allVerses = (bible[getRandomBook].chapters[getRandomChapter].length);
             let getRandomVerse = GenerateRandomVerses(allVerses);
 
-            let randomVerse = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
-            // console.log(`Livro: ${bible[getRandomBook].name}
-            // Capitulo: ${bible[getRandomBook].chapters[getRandomChapter]}
-            // Versiculo: ${bible[getRandomBook].chapters[getRandomChapter][getRandomVerse]}`);
-            // console.log(`Versiculo: ${bible[getRandomBook].chapters[getRandomChapter][getRandomVerse]}`);
-            div.innerText = randomVerse;
+            let abbrev = bible[getRandomBook].abbrev;
+            let name = bible[getRandomBook].name;
+            let chapter = getRandomChapter + 1;
+            let verse = getRandomVerse + 1;
+            let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
+
+            console.log(name, chapter, verse, verseContent);
         })
         .catch((err) => {
             console.log(err);
