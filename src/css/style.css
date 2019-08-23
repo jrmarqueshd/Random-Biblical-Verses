@@ -1,16 +1,20 @@
 :root{
-    --title-color: #000;
-    --content-color: #000;
-
-    --h1-background-color: #fff;
-    --h1-border-color: #000;
+    --title-color: #141518;
+    --content-color: #6B6B6B;
 
     --card-background: rgba(255,255,255, .9);
     --header-card-card-background: rgba(255,255,255, .3);
 
+    --h1-background-color: linear-gradient(to bottom, var(--card-background) 50%, transparent 50%);
+    --h1-border-color: transparent;
+
     --shadow-card-color: rgba(0,0,0,0.4);
 
-    --exclusive-font-family-quotation-marks: "Catamaran", serif;
+    --exclusive-font-family-quotation-marks: 'Catamaran', serif;
+    --exclusive-color-quotation-marks: #9C9C9C;
+
+    --title-font: 'Bitter', serif;
+    --content-font: 'Roboto', sans-serif;
 
     --font-size-default: 18px;
 
@@ -18,10 +22,31 @@
 }
 
 html, *{
+    color: var(--content-color); 
     font-size: var(--font-size-default);
+    font-family: var(--content-font);
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+        -ms-font-smoothing: antialiased;
+        -o-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-stroke: 1px transparent;
+        -moz-text-stroke: 1px transparent;
+        -ms-text-stroke: 1px transparent;
+        -moz-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+        -ms-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
     font-weight: normal;
     list-style: none;
     margin: 0;
+    outline: none;
     padding: 0;
     text-decoration: none;
     scroll-behavior: smooth;
@@ -32,6 +57,7 @@ body{
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 body,
@@ -66,13 +92,15 @@ article{
 }
 
 body section.main-content{
-    height: 494px;
+    height: auto;
+        min-height: 525px;
     margin: 15px;
     width: 100%;
         max-width: var(--card-width);
 }
 
 body section.main-content.card{
+    border-radius: 7px;
     box-shadow: 0 0 30px 0 var(--shadow-card-color);
     overflow-x: hidden;
 }
@@ -81,14 +109,19 @@ body section.main-content header{
     background-color: var(--header-card-card-background);
     filter: blur(3px);
     height: auto;
-    padding: 40px 0;
+    padding: 80px 0;
     width: 100%;
+}
+
+h1{
+    color: var(--title-color);
+    font-family: var(--title-font);
 }
 
 article{
     background-color: var(--card-background);
     height: auto;
-    padding: 15px 50px;
+    padding: 15px 50px 25px;
     position: relative;
 }
 
@@ -97,7 +130,7 @@ article > *{
 }
 
 body section.main-content article h1{
-    background-color: var(--h1-background-color);
+    background-image: var(--h1-background-color);
     border: 1px solid var(--h1-border-color);
     border-radius: 100%;
     font-size: 5em;
@@ -108,15 +141,17 @@ body section.main-content article h1{
 }
 
 article .-quotation-marks{
-    color: var(--content-color);
+    color: var(--exclusive-color-quotation-marks);
     font-family: var(--exclusive-font-family-quotation-marks);
-    font-size: 5em;
+    font-size: 4.55em;
     height: calc(148px / 2);
-    margin-top: 30px;
+    margin-top: 50px;
+    padding-top: 15px;
     text-align: center;
 }
 
 article p{
+    padding-bottom: 10px;
     text-align: center;
 }
 
