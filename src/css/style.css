@@ -52,12 +52,31 @@ html, *{
     scroll-behavior: smooth;
 }
 
+p::selection,
+span::selection,
+h1::selection,
+h2::selection,
+h3::selection {
+    background: transparent;
+    color: peru;
+}
+
+p::-moz-selection,
+span::-moz-selection,
+h1::-moz-selection,
+h2::-moz-selection,
+h3::-moz-selection {
+    background: transparent;
+    color: peru;
+}
+
 body{
     background-image: url("https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: auto;
+        min-height: 100vh;
 }
 
 body,
@@ -151,7 +170,8 @@ article .-quotation-marks{
 }
 
 article p{
-    padding-bottom: 10px;
+    line-height: 1.37;
+    padding-bottom: 25px;
     text-align: center;
 }
 
@@ -167,3 +187,8 @@ article h2{
     font-weight: bold;
 }
 
+@media screen and (max-width: 400px){
+    article {
+        padding: 15px 15px 25px;
+    }
+}
