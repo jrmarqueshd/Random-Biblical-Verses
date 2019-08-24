@@ -1,18 +1,25 @@
+"use strict";
+
 window.addEventListener("load", () => {
     let $abbrevBookContent = document.getElementById("abbrevBookContent");
     let $verseContent = document.getElementById("verseContent");
     let $bookContent = document.getElementById("bookContent");
     let $capVerContent = document.getElementById("capVerContent");
 
-    let $fieldShare = document.getElementById("share");
+    let $fieldShare = document.getElementById("share"),
+        $shareButton = document.querySelectorAll(".share-button");
 
     function generateRandomVerses(lastBook) {
         return Math.floor(Math.random() * (lastBook - 0 + 1) - 0 );
     }
 
+    function setClassClassToElement(element, classElement){
+        element.classList.add(classElement);
+    }
+
     function showFieldShare(interval){
-        setInterval(() => {
-            $fieldShare.classList.add("on");
+        setTimeout(() => {
+            setClassClassToElement($fieldShare, "on");
         }, interval);
     }
 
@@ -38,9 +45,17 @@ window.addEventListener("load", () => {
             $verseContent.innerText = verseContent;
             $capVerContent.innerText = `${chapter}:${verse}`;
             
-            showFieldShare(10000);
+            showFieldShare(1000);
         })
         .catch((err) => {
             console.log(err);
         })
+
+    $shareButton.forEach(element => {
+        element.addEventListener("click", ()=>{
+            setClassClassToElement(element, "on");
+        });
+    });
+    
+    
 });
