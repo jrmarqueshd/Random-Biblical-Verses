@@ -229,7 +229,7 @@ a.search-random-verse:hover{
 .share{
     align-content: center;
     background-color: var(--background-color);
-    height: 100%;
+    height: 0;
     overflow: hidden;
     position: absolute;
         bottom: 0;
