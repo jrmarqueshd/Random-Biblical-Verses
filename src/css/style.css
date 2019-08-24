@@ -4,6 +4,8 @@
     --content-color_with_opacity: rgba(107,107,107,0.5);
     --background-color: rgba(255,255,255, .7);
 
+    --selected-color: peru;
+
     --card-background: rgba(255,255,255, .9);
     --header-card-card-background: rgba(255,255,255, .3);
 
@@ -60,7 +62,7 @@ h1::selection,
 h2::selection,
 h3::selection {
     background: transparent;
-    color: peru;
+    color: var(--selected-color);
 }
 
 p::-moz-selection,
@@ -69,7 +71,7 @@ h1::-moz-selection,
 h2::-moz-selection,
 h3::-moz-selection {
     background: transparent;
-    color: peru;
+    color: var(--selected-color);
 }
 
 body{
@@ -212,7 +214,7 @@ a.search-random-verse{
 }
 
 a.search-random-verse:hover{
-    background-color: peru;
+    background-color: var(--selected-color);
     color: white;
 }
 
@@ -254,21 +256,11 @@ a.search-random-verse:hover{
 .share a{
     margin: 5px;
     position: relative;
+    overflow: hidden;
     width: 14.5%;
 }
 
-@keyframes activeButtonShare{
-    from{
-        top: -100%;
-    }
-
-    to{
-        top: 0;
-    }
-}
-
 .share a.on::before{
-    animation: activeButtonShare 987ms ease-in;
     background-image: url("../images/loading-random-bible.gif");
         background-size: 12em;
         background-position: center center;
@@ -276,10 +268,28 @@ a.search-random-verse:hover{
     content: "";
     display: block;
     height: 100%;
+    opacity: 0.5;
     position: absolute;
-        top: 0;
+        top: -2px;
         left: 0;
     width: 100%;
+}
+
+.share .close-button {
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+        top: 0.7em;
+        right: 1em;
+    transition: all 98.7ms ease-in;
+        -moz-transition: all 98.7ms ease-in;
+        -o-transition: all 98.7ms ease-in;
+        -webkit-transition: all 98.7ms ease-in;
+}
+
+.share .close-button:hover{
+    color: var(--selected-color);
 }
 
 @media screen and (max-width: 400px){
