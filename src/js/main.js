@@ -7,19 +7,26 @@ window.addEventListener("load", () => {
     let $capVerContent = document.getElementById("capVerContent");
 
     let $fieldShare = document.getElementById("share"),
-        $shareButton = document.querySelectorAll(".share-button");
+        $shareButton = document.querySelectorAll(".share-button"),
+        $closeButton = document.getElementById("closeButton");
+
+    const timeInMsToReadChar = 12;
 
     function generateRandomVerses(lastBook) {
         return Math.floor(Math.random() * (lastBook - 0 + 1) - 0 );
     }
 
-    function setClassClassToElement(element, classElement){
+    function setClassToElement(element, classElement){
         element.classList.add(classElement);
+    }
+
+    function removeClassFromElement(element, classElement){
+        element.classList.remove(classElement);
     }
 
     function showFieldShare(interval){
         setTimeout(() => {
-            setClassClassToElement($fieldShare, "on");
+            setClassToElement($fieldShare, "on");
         }, interval);
     }
 
@@ -28,7 +35,7 @@ window.addEventListener("load", () => {
             return resp.json();
         })
         .then((bible) => {
-            this.allBooks = (bible.length - 1);
+            let allBooks = (bible.length - 1);
             let getRandomBook = generateRandomVerses(allBooks);
             const allChapters = (bible[getRandomBook].chapters.length - 1);
             let getRandomChapter = generateRandomVerses(allChapters);
@@ -39,13 +46,14 @@ window.addEventListener("load", () => {
             let chapter = getRandomChapter + 1;
             let verse = getRandomVerse + 1;
             let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
+            let setTimeNecessarilyToReadVerse = ((verseContent.length / timeInMsToReadChar) * 1500);
 
             $abbrevBookContent.innerText = abbrev;
             $bookContent.innerText = bookName;
             $verseContent.innerText = verseContent;
             $capVerContent.innerText = `${chapter}:${verse}`;
             
-            showFieldShare(1000);
+            showFieldShare(setTimeNecessarilyToReadVerse);
         })
         .catch((err) => {
             console.log(err);
@@ -53,8 +61,12 @@ window.addEventListener("load", () => {
 
     $shareButton.forEach(element => {
         element.addEventListener("click", ()=>{
-            setClassClassToElement(element, "on");
+            setClassToElement(element, "on");
         });
     });
+
+    $closeButton.addEventListener("click", ()=>{
+        removeClassFromElement($fieldShare, "on");
+    })
     
 });
