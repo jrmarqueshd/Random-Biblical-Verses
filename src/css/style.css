@@ -122,6 +122,7 @@ body section.main-content{
     height: auto;
         min-height: 525px;
     margin: 15px;
+    position: relative;
     width: 100%;
         max-width: var(--card-width);
 }
@@ -295,6 +296,29 @@ a.search-random-verse:hover{
 .share .close-button:hover{
     color: var(--selected-color);
 }
+
+.main-content img.share-img-button{
+    cursor: pointer;
+    filter: invert(1);
+    position: absolute;
+        top: 1em;
+        right: 1em;
+    width: 25px;
+    z-index: 1;
+}
+
+.main-content img.share-img-button:hover{
+    filter: invert(0.7);
+}
+
+.main-content img.share-img-button.off{
+    opacity: 0;
+    transition: all 987ms ease-in;
+        -moz-transition: all 987ms ease-in;
+        -o-transition: all 987ms ease-in;
+        -webkit-transition: all 987ms ease-in;
+}
+
 
 @media screen and (max-width: 400px){
     article {
