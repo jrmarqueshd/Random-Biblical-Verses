@@ -6,7 +6,8 @@ window.addEventListener("load", () => {
     let $bookContent = document.getElementById("bookContent");
     let $capVerContent = document.getElementById("capVerContent");
 
-    let $fieldShare = document.getElementById("share"),
+    let $articleCard = document.getElementById("articleCard"),
+        $fieldShare = document.getElementById("share"),
         $shareButton = document.querySelectorAll(".share-button"),
         $closeButton = document.getElementById("closeButton");
 
@@ -27,6 +28,7 @@ window.addEventListener("load", () => {
     function showFieldShare(interval){
         setTimeout(() => {
             setClassToElement($fieldShare, "on");
+            setClassToElement($articleCard, "off");
         }, interval);
     }
 
@@ -71,5 +73,6 @@ window.addEventListener("load", () => {
 
     $closeButton.addEventListener("click", ()=>{
         removeClassFromElement($fieldShare, "on");
+        removeClassFromElement($articleCard, "off");
     });
 });
