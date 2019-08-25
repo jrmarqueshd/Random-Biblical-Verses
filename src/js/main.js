@@ -10,7 +10,8 @@ window.addEventListener("load", () => {
         let $articleCard = document.getElementById("articleCard"),
             $fieldShare = document.getElementById("share"),
             $shareButton = document.querySelectorAll(".share-button"),
-            $closeButton = document.getElementById("closeButton");
+            $closeButton = document.getElementById("closeButton"),
+            $shareImgButton = document.getElementById("shareImgButton");
 
         const timeInMsToReadChar = 12;
 
@@ -44,6 +45,7 @@ window.addEventListener("load", () => {
             setTimeout(() => {
                 setClassToElement($fieldShare, "on");
                 setClassToElement($articleCard, "off");
+                setClassToElement($shareImgButton, "off");
             }, interval);
         }
 
@@ -94,6 +96,13 @@ window.addEventListener("load", () => {
         $closeButton.addEventListener("click", ()=>{
             removeClassFromElement($fieldShare, "on");
             removeClassFromElement($articleCard, "off");
+            removeClassFromElement($shareImgButton, "off");
+        });
+
+        $shareImgButton.addEventListener("click", ()=>{
+            setClassToElement($fieldShare, "on");
+            setClassToElement($articleCard, "off");
+            setClassToElement($shareImgButton, "off");
         });
     }
 });
