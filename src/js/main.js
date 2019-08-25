@@ -32,7 +32,11 @@ window.addEventListener("load", () => {
 
     fetch("../assets/data/bible.json")
         .then((resp) => {
-            return resp.json();
+            if(resp.ok){
+                return resp.json();
+            }else{
+                console.log("An error has occurred");
+            }
         })
         .then((bible) => {
             let allBooks = (bible.length - 1);
@@ -56,7 +60,7 @@ window.addEventListener("load", () => {
             showFieldShare(setTimeNecessarilyToReadVerse);
         })
         .catch((err) => {
-            console.log(err);
+            alert(`Aconteceu um erro ${err}, tente novamente mais tarde.`);
         })
 
     $shareButton.forEach(element => {
@@ -67,6 +71,5 @@ window.addEventListener("load", () => {
 
     $closeButton.addEventListener("click", ()=>{
         removeClassFromElement($fieldShare, "on");
-    })
-    
+    });
 });
