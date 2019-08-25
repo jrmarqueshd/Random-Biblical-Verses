@@ -154,12 +154,16 @@ article{
 }
 
 article::before{
-    background-color: peru;
+    background-color: var(--selected-color);
     content: "";
     display: block;
     height: 5px;
     position: absolute;
         top: -5px;
+    transition: all 98.7ms ease-in;
+        -moz-transition: all 98.7ms ease-in;
+        -o-transition: all 98.7ms ease-in;
+        -webkit-transition: all 98.7ms ease-in;
     width: 0;
     z-index: -1;
 }
@@ -224,7 +228,7 @@ a.search-random-verse{
     background-color: white;
     padding: 15px 25px;
     border-radius: 30px;
-    color: peru;
+    color: var(--selected-color);
     transition: all 98.7ms ease-in;
 }
 
