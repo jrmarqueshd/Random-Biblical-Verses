@@ -25,6 +25,14 @@ window.addEventListener("load", () => {
         element.classList.remove(classElement);
     }
 
+    function generateUrlToTwitterShareButton(abbrev, content, verse, chapter){
+        let text = `"${content}" - (${abbrev} ${verse}:${chapter})`;
+        let twitterShareLink = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fversiculo.cf&hashtags=versiculododia%2Cbibliaacf%2CDeus&text=" + text;
+        
+        let $twitterButton = document.getElementById("twitterButton");
+        $twitterButton.setAttribute("href", twitterShareLink);
+    }
+
     function showFieldShare(interval){
         setTimeout(() => {
             setClassToElement($fieldShare, "on");
@@ -60,6 +68,8 @@ window.addEventListener("load", () => {
             $capVerContent.innerText = `${chapter}:${verse}`;
             
             showFieldShare(setTimeNecessarilyToReadVerse);
+
+            generateUrlToTwitterShareButton(abbrev, verseContent, chapter, verse);
         })
         .catch((err) => {
             alert(`Aconteceu um erro ${err}, tente novamente mais tarde.`);
