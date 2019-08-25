@@ -203,6 +203,10 @@ article.off p,
 article.off h2,
 article.off h3{
     color: var(--content-color_with_opacity);
+    transition: color 987ms ease-in;
+        -moz-transition: color 987ms ease-in;
+        -o-transition: color 987ms ease-in;
+        -webkit-transition: color 987ms ease-in;
 }
 
 a.search-random-verse{
