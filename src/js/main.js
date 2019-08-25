@@ -47,7 +47,7 @@ window.addEventListener("load", () => {
             }, interval);
         }
 
-        fetch("../assets/data/bible.json")
+        fetch("../src/data/bible.json")
             .then((resp) => {
                 if(resp.ok){
                     return resp.json();
