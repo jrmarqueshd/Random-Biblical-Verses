@@ -6,6 +6,8 @@ window.addEventListener("load", () => {
         let $verseContent = document.getElementById("verseContent");
         let $bookContent = document.getElementById("bookContent");
         let $capVerContent = document.getElementById("capVerContent");
+        let $tagShare = document.getElementById("tagShare");
+        let $ldsDualRing = document.getElementById("ldsDualRing");
 
         let $articleCard = document.getElementById("articleCard"),
             $fieldShare = document.getElementById("share"),
@@ -33,9 +35,9 @@ window.addEventListener("load", () => {
             let twitterShareLink = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fversiculo.cf&hashtags=versiculododia%2Cbibliaacf%2CDeus&text=" + text;
             
             let $twitterButton = document.getElementById("twitterButton"),
+                $whatsappButton = document.getElementById("whatsappButton"),
                 $facebookButton = document.getElementById("facebookButton"),
-                $contentShareFacebook = document.getElementById("contentShareFacebook"),
-                $whatsappButton = document.getElementById("whatsappButton");
+                $contentShareFacebook = document.getElementById("contentShareFacebook");
 
             $twitterButton.setAttribute("href", twitterShareLink);
             $whatsappButton.setAttribute("href", whatsappShareLink);
@@ -43,19 +45,17 @@ window.addEventListener("load", () => {
 
         function showFieldShare(interval){
             setTimeout(() => {
-                setClassToElement($fieldShare, "on");
-                setClassToElement($articleCard, "off");
-                setClassToElement($shareImgButton, "off");
+                removeClassFromElement($tagShare, "off");
             }, interval);
         }
 
         fetch("../src/data/bible.json")
             .then((resp) => {
-                if(resp.ok){
-                    return resp.json();
-                }else{
-                    console.log("An error has occurred");
+                while(!resp.ok){
+                    removeClassFromElement($ldsDualRing, "off");                    
                 }
+                setClassToElement($ldsDualRing, "off");
+                return resp.json();
             })
             .then((bible) => {
                 let allBooks = (bible.length - 1);
@@ -69,7 +69,7 @@ window.addEventListener("load", () => {
                 let chapter = getRandomChapter + 1;
                 let verse = getRandomVerse + 1;
                 let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
-                let setTimeNecessarilyToReadVerse = ((verseContent.length / timeInMsToReadChar) * 1500);
+                let setTimeNecessarilyToReadVerse = ((verseContent.length / timeInMsToReadChar) * 1000);
 
                 $abbrevBookContent.innerText = abbrev;
                 $bookContent.innerText = bookName;
@@ -103,6 +103,15 @@ window.addEventListener("load", () => {
             setClassToElement($fieldShare, "on");
             setClassToElement($articleCard, "off");
             setClassToElement($shareImgButton, "off");
+            setClassToElement($tagShare, "off");
+        });
+
+        $tagShare.addEventListener("mouseover", ()=>{
+            setClassToElement($tagShare, "off");
         });
     }
 });
+
+function newFunction() {
+    alert("funcionou");
+}

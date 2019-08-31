@@ -6,10 +6,11 @@
 
     --selected-color: peru;
 
+    --tag-background: rgba(255,255,255,1);
     --card-background: rgba(255,255,255, .9);
     --header-card-card-background: rgba(255,255,255, .3);
 
-    --h1-background-color: linear-gradient(to bottom, var(--card-background) 51%, transparent 49%);
+    --h1-background-color: linear-gradient(to bottom, var(--card-background) 50.3%, transparent 49.7%);
     --h1-border-color: transparent;
 
     --shadow-card-color: rgba(0,0,0,0.4);
@@ -325,6 +326,10 @@ a.search-random-verse:hover{
     z-index: 1;
 }
 
+.main-content img.share-img-button::before{
+    content: "";
+}
+
 .main-content img.share-img-button:hover{
     filter: invert(0.7);
 }
@@ -336,6 +341,70 @@ a.search-random-verse:hover{
         -o-transition: all 987ms ease-in;
         -webkit-transition: all 987ms ease-in;
 }
+
+.tag-share{
+    background-color: var(--tag-background);
+    color: var(--title-color);
+    font-size: 0.8em;
+    position: absolute;
+        top: 1em;
+        right: 4em;
+    padding: 15px;
+    transition: all 987ms ease-in;
+        -moz-transition: all 987ms ease-in;
+        -o-transition: all 987ms ease-in;
+        -webkit-transition: all 987ms ease-in;
+    z-index: 9999999999;
+}
+
+.tag-share::before{
+    background-color: var(--tag-background);
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+        right: -0.5em;
+        top: 0.4em;
+    transform: rotate(45deg);
+    width: 20px;
+}
+
+.tag-share.off{
+    cursor: default;
+    opacity: 0;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid var(--selected-color);
+    border-color: var(--selected-color) transparent var(--selected-color) transparent;
+    animation: lds-dual-ring 987ms linear infinite;
+}
+
+.lds-dual-ring.off{
+    display: none;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 @media screen and (max-width: 400px){
     article {
