@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
         let $tagShare = document.getElementById("tagShare");
         let $ldsDualRing = document.getElementById("ldsDualRing");
 
-        $abbrevBookContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
+        $bookContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
 
         let $articleCard = document.getElementById("articleCard"),
             $fieldShare = document.getElementById("share"),
