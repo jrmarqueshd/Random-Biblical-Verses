@@ -58,7 +58,7 @@ window.addEventListener("load", () => {
                 return resp.json();
             })
             .then((bible) => {
-                $bookContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
+                $bookContent.innerText = 'lorem ipsum';
                 let allBooks = (bible.length - 1);
                 let getRandomBook = generateRandomVerses(allBooks);
                 const allChapters = (bible[getRandomBook].chapters.length - 1);
