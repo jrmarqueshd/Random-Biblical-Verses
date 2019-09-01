@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
         let $bookContent = document.getElementById("bookContent");
         let $capVerContent = document.getElementById("capVerContent");
         let $tagShare = document.getElementById("tagShare");
+        let $arrowNext = document.getElementById("arrowNext");
 
         $verseContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
 
@@ -50,7 +51,7 @@ window.addEventListener("load", () => {
             }, interval);
         }
 
-        fetch("../src/data/bible.json")
+        fetch("../assets/data/bible.json")
             .then((resp) => {
                 return resp.json();
             })
@@ -62,10 +63,10 @@ window.addEventListener("load", () => {
                 const allVerses = (bible[getRandomBook].chapters[getRandomChapter].length - 1);
                 let getRandomVerse = generateRandomVerses(allVerses);
                 let abbrev = bible[getRandomBook].abbrev;
+                let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
                 let bookName = bible[getRandomBook].name;
                 let chapter = getRandomChapter + 1;
                 let verse = getRandomVerse + 1;
-                let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
                 let setTimeNecessarilyToReadVerse = ((verseContent.length / timeInMsToReadChar) * 1000);
                 
                 $abbrevBookContent.innerText = abbrev;
@@ -75,6 +76,24 @@ window.addEventListener("load", () => {
                 
                 showFieldShare(setTimeNecessarilyToReadVerse);
                 generateUrlsToShareButton(abbrev, verseContent, chapter, verse);
+                
+                let nextVerse = ++getRandomVerse;
+                let verifyNextVerseContent = bible[getRandomBook].chapters[getRandomChapter][nextVerse];
+
+                if(verifyNextVerseContent == undefined){
+                    setClassToElement($arrowNext, "off");
+                }else{
+                    $arrowNext.addEventListener("click", ()=>{
+                        let nextVerseContent = bible[getRandomBook].chapters[getRandomChapter][nextVerse];
+                        if(nextVerseContent == undefined){
+                            setClassToElement($arrowNext, "off");
+                        }else{
+                            $verseContent.innerText = nextVerseContent;
+                            $capVerContent.innerText = `${chapter}:${++verse}`;
+                        }
+                        ++nextVerse;
+                    });
+                }
             })
             .catch((err) => {
                 alert(`Aconteceu um erro ${err}, tente novamente mais tarde.`);
