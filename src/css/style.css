@@ -195,10 +195,48 @@ article .-quotation-marks{
     text-align: center;
 }
 
-article p{
+@keyframes fadeInContent{
+    from{
+        opacity: 0.5;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-o-keyframes fadeInContent{
+    from{
+        opacity: 0.5;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadeInContent{
+    from{
+        opacity: 0.5;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadeInContent{
+    from{
+        opacity: 0.5;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+article p.verse-content{
+    animation: fadeInContent 987ms ease-in;
     line-height: 1.37;
     padding-bottom: 25px;
     text-align: center;
+    transition: all 987ms ease-out;
+        -moz-transition: all 987ms ease-out;
+        -o-transition: all 987ms ease-out;
+        -webkit-transition: all 987ms ease-out;
 }
 
 article h2,
@@ -350,10 +388,10 @@ a.search-random-verse:hover{
         top: 1em;
         right: 4em;
     padding: 15px;
-    transition: all 987ms ease-in;
-        -moz-transition: all 987ms ease-in;
-        -o-transition: all 987ms ease-in;
-        -webkit-transition: all 987ms ease-in;
+    transition: all 98.7ms ease-in;
+        -moz-transition: all 98.7ms ease-in;
+        -o-transition: all 98.7ms ease-in;
+        -webkit-transition: all 98.7ms ease-in;
     z-index: 9999999999;
 }
 
@@ -381,15 +419,15 @@ a.search-random-verse:hover{
 }
 
 .lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 46px;
-    height: 46px;
-    margin: 1px;
+    animation: lds-dual-ring 987ms linear infinite;
     border-radius: 50%;
     border: 5px solid var(--selected-color);
     border-color: var(--selected-color) transparent var(--selected-color) transparent;
-    animation: lds-dual-ring 987ms linear infinite;
+    content: " ";
+    display: block;
+    height: 46px;
+    margin: 1px;
+    width: 46px;
 }
 
 .lds-dual-ring.off{
@@ -398,14 +436,23 @@ a.search-random-verse:hover{
 
 .arrow-next{
     cursor: pointer;
+    opacity: 0.5;
     position: absolute;
         right: 0.5em;
         bottom: 7em;
+    transition: all 98.7ms ease-in;
+        -moz-transition: all 98.7ms ease-in;
+        -o-transition: all 98.7ms ease-in;
+        -webkit-transition: all 98.7ms ease-in;
     width: 30px;
 }
 
+.arrow-next.off{
+    display: none;
+}
+
 .arrow-next:hover{
-    opacity: 0.2;
+    opacity: 1;
 }
 
 @keyframes lds-dual-ring {
