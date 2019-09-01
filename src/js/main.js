@@ -58,6 +58,7 @@ window.addEventListener("load", () => {
                 return resp.json();
             })
             .then((bible) => {
+                $bookContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
                 let allBooks = (bible.length - 1);
                 let getRandomBook = generateRandomVerses(allBooks);
                 const allChapters = (bible[getRandomBook].chapters.length - 1);
@@ -70,14 +71,13 @@ window.addEventListener("load", () => {
                 let verse = getRandomVerse + 1;
                 let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
                 let setTimeNecessarilyToReadVerse = ((verseContent.length / timeInMsToReadChar) * 1000);
-
+                
                 $abbrevBookContent.innerText = abbrev;
                 $bookContent.innerText = bookName;
                 $verseContent.innerText = verseContent;
                 $capVerContent.innerText = `${chapter}:${verse}`;
                 
                 showFieldShare(setTimeNecessarilyToReadVerse);
-
                 generateUrlsToShareButton(abbrev, verseContent, chapter, verse);
             })
             .catch((err) => {
