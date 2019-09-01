@@ -396,6 +396,18 @@ a.search-random-verse:hover{
     display: none;
 }
 
+.arrow-next{
+    cursor: pointer;
+    position: absolute;
+        right: 0.5em;
+        bottom: 7em;
+    width: 30px;
+}
+
+.arrow-next:hover{
+    opacity: 0.2;
+}
+
 @keyframes lds-dual-ring {
     0% {
         transform: rotate(0deg);
