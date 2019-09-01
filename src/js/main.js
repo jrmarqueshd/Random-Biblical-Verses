@@ -7,9 +7,8 @@ window.addEventListener("load", () => {
         let $bookContent = document.getElementById("bookContent");
         let $capVerContent = document.getElementById("capVerContent");
         let $tagShare = document.getElementById("tagShare");
-        let $ldsDualRing = document.getElementById("ldsDualRing");
 
-        $bookContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
+        $verseContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
 
         let $articleCard = document.getElementById("articleCard"),
             $fieldShare = document.getElementById("share"),
@@ -53,7 +52,6 @@ window.addEventListener("load", () => {
 
         fetch("../src/data/bible.json")
             .then((resp) => {
-                setClassToElement($ldsDualRing, "off");
                 return resp.json();
             })
             .then((bible) => {
