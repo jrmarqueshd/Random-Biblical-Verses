@@ -9,6 +9,8 @@ window.addEventListener("load", () => {
         let $tagShare = document.getElementById("tagShare");
         let $ldsDualRing = document.getElementById("ldsDualRing");
 
+        $abbrevBookContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
+
         let $articleCard = document.getElementById("articleCard"),
             $fieldShare = document.getElementById("share"),
             $shareButton = document.querySelectorAll(".share-button"),
@@ -58,7 +60,6 @@ window.addEventListener("load", () => {
                 return resp.json();
             })
             .then((bible) => {
-                $bookContent.innerText = 'lorem ipsum';
                 let allBooks = (bible.length - 1);
                 let getRandomBook = generateRandomVerses(allBooks);
                 const allChapters = (bible[getRandomBook].chapters.length - 1);
