@@ -53,9 +53,6 @@ window.addEventListener("load", () => {
 
         fetch("../src/data/bible.json")
             .then((resp) => {
-                while(!resp.ok){
-                    removeClassFromElement($ldsDualRing, "off");                    
-                }
                 setClassToElement($ldsDualRing, "off");
                 return resp.json();
             })
