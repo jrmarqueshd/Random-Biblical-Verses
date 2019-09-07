@@ -1,7 +1,7 @@
 "use strict";
 
 window.addEventListener("load", () => {
-    if(window.location.href == "https://www.versiculo.cf/random-verse.html" || window.location.href == "http://127.0.0.1:5500/random-verse.html"){
+    if (window.location.href == "https://www.versiculo.cf/random-verse.html" || window.location.href == "http://127.0.0.1:5500/random-verse.html") {
         let $abbrevBookContent = document.getElementById("abbrevBookContent");
         let $verseContent = document.getElementById("verseContent");
         let $bookContent = document.getElementById("bookContent");
@@ -19,23 +19,23 @@ window.addEventListener("load", () => {
 
         const timeInMsToReadChar = 12;
 
-        function generateRandomVerses(lastBook) {
-            return Math.floor(Math.random() * (lastBook - 0 + 1) - 0 );
+        function setRandomValue(last){
+            return Math.floor((Math.random() * (last + 1)));
         }
 
-        function setClassToElement(element, classElement){
+        function setClassToElement(element, classElement) {
             element.classList.add(classElement);
         }
 
-        function removeClassFromElement(element, classElement){
+        function removeClassFromElement(element, classElement) {
             element.classList.remove(classElement);
         }
 
-        function generateUrlsToShareButton(abbrev, content, verse, chapter){
+        function generateUrlsToShareButton(abbrev, content, verse, chapter) {
             let text = `"${content}" - (${abbrev} ${verse}:${chapter})`;
             let whatsappShareLink = `https://api.whatsapp.com/send?text=*Versiculo do dia:* ${text} https://versiculo.cf/`;
             let twitterShareLink = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fversiculo.cf&hashtags=versiculododia%2Cbibliaacf%2CDeus&text=" + text;
-            
+
             let $twitterButton = document.getElementById("twitterButton"),
                 $whatsappButton = document.getElementById("whatsappButton"),
                 $facebookButton = document.getElementById("facebookButton"),
@@ -45,88 +45,73 @@ window.addEventListener("load", () => {
             $whatsappButton.setAttribute("href", whatsappShareLink);
         }
 
-        function showFieldShare(interval){
+        function showFieldShare(interval) {
             setTimeout(() => {
                 removeClassFromElement($tagShare, "off");
             }, interval);
         }
 
         fetch("../assets/data/bible.json")
-            .then((resp) => {
-                return resp.json();
-            })
-            .then((bible) => {
-                let allBooks = (bible.length - 1);
-                let getRandomBook = generateRandomVerses(allBooks);
-                const allChapters = (bible[getRandomBook].chapters.length - 1);
-                let getRandomChapter = generateRandomVerses(allChapters);
-                const allVerses = (bible[getRandomBook].chapters[getRandomChapter].length - 1);
-                let getRandomVerse = generateRandomVerses(allVerses);
-                let abbrev = bible[getRandomBook].abbrev;
-                let verseContent = bible[getRandomBook].chapters[getRandomChapter][getRandomVerse];
-                let bookName = bible[getRandomBook].name;
-                let chapter = getRandomChapter + 1;
-                let verse = getRandomVerse + 1;
-                let setTimeNecessarilyToReadVerse = ((verseContent.length / timeInMsToReadChar) * 1000);
-                
-                $abbrevBookContent.innerText = abbrev;
-                $bookContent.innerText = bookName;
-                $verseContent.innerText = verseContent;
-                $capVerContent.innerText = `${chapter}:${verse}`;
-                
-                showFieldShare(setTimeNecessarilyToReadVerse);
-                generateUrlsToShareButton(abbrev, verseContent, chapter, verse);
-                
-                let nextVerse = ++getRandomVerse;
-                let verifyNextVerseContent = bible[getRandomBook].chapters[getRandomChapter][nextVerse];
+        .then(myJson => myJson.json())
+        .then(resp=>{
+            var livro = resp[setRandomValue((resp.length - 1))];
+            [].forEach.call(resp, (e)=>{
+                if(e.abbrev == livro.abbrev){
+                    let abbrev = e.abbrev;
+                    let name = e.name;
+                    let chapterNumber = setRandomValue((e.chapters.length - 1));
+                    let chapter = e.chapters[chapterNumber];
+                    let verseNumber = setRandomValue((chapter.length - 1));
+                    let verse = chapter[verseNumber];
+                    let setTimeNecessarilyToReadVerse = ((verse.length / timeInMsToReadChar) * 1000);
 
-                if(verifyNextVerseContent == undefined){
-                    setClassToElement($arrowNext, "off");
-                }else{
-                    $arrowNext.addEventListener("click", ()=>{
-                        let nextVerseContent = bible[getRandomBook].chapters[getRandomChapter][nextVerse];
-                        if(nextVerseContent == undefined){
-                            setClassToElement($arrowNext, "off");
+                    $abbrevBookContent.innerText = abbrev;
+                    $bookContent.innerText = name;
+                    $verseContent.innerText = verse;
+                    $capVerContent.innerText = `${++chapterNumber}:${++verseNumber}`;
+
+
+                    showFieldShare(setTimeNecessarilyToReadVerse);
+                    generateUrlsToShareButton(abbrev, verse, chapterNumber, verseNumber);
+                    
+                    arrowNext.addEventListener("click", ()=>{
+                        if(chapter[verseNumber] != undefined){
+                            $verseContent.innerText = chapter[verseNumber];
+                            $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                            
+                            generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
                         }else{
-                            $verseContent.innerText = nextVerseContent;
-                            $capVerContent.innerText = `${chapter}:${++verse}`;
+                            setClassToElement($arrowNext, "off");
                         }
-                        ++nextVerse;
                     });
                 }
-            })
-            .catch((err) => {
-                alert(`Aconteceu um erro ${err}, tente novamente mais tarde.`);
-            })
+            });
+        });
 
         $shareButton.forEach(element => {
-            element.addEventListener("click", ()=>{
+            element.addEventListener("click", () => {
                 setClassToElement(element, "on");
-                setTimeout(()=>{
+                setTimeout(() => {
                     removeClassFromElement(element, "on");
                 }, 5000);
             });
         });
 
-        $closeButton.addEventListener("click", ()=>{
+        $closeButton.addEventListener("click", () => {
             removeClassFromElement($fieldShare, "on");
             removeClassFromElement($articleCard, "off");
             removeClassFromElement($shareImgButton, "off");
         });
 
-        $shareImgButton.addEventListener("click", ()=>{
+        $shareImgButton.addEventListener("click", () => {
             setClassToElement($fieldShare, "on");
             setClassToElement($articleCard, "off");
             setClassToElement($shareImgButton, "off");
             setClassToElement($tagShare, "off");
         });
 
-        $tagShare.addEventListener("mouseover", ()=>{
+        $tagShare.addEventListener("mouseover", () => {
             setClassToElement($tagShare, "off");
         });
     }
 });
-
-function newFunction() {
-    alert("funcionou");
-}

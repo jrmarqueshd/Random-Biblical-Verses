@@ -4,6 +4,7 @@ const rename = require("gulp-rename");
 const livereload = require("gulp-livereload");
 const cleanCSS = require("gulp-clean-css");
 const plumber = require("gulp-plumber");
+const jsValidate = require("gulp-jsvalidate");
 const htmlMin = require("gulp-htmlmin");
 const jsMinify = require("gulp-minify");
 const jsonMinify = require("gulp-jsonmin");
@@ -33,6 +34,7 @@ gulp.task("js", ()=>{
     livereload.listen();
     return watch("./src/js/*.js")
         .pipe(plumber())
+        .pipe(jsValidate())
         .pipe(jsMinify({
             ext: {
                 src: "-debug.js",

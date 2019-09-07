@@ -10,6 +10,7 @@
     "gulp-cli": "2.2.0",
     "gulp-htmlmin": "5.0.1",
     "gulp-jsonmin": "1.2.0",
+    "gulp-jsvalidate": "4.0.0",
     "gulp-livereload": "4.0.1",
     "gulp-minify": "3.1.0",
     "gulp-plumber": "1.2.1",
