@@ -394,11 +394,26 @@ a.search-random-verse:hover{
     z-index: 1;
 }
 
+.main-content .new-random-verse-img-button{
+    cursor: pointer;    
+    filter: invert(1);
+    position: absolute;
+        top: 1em;
+        left: 1em;
+    transition: all 98.7ms ease-in;
+        -moz-transition: all 98.7ms ease-in;
+        -o-transition: all 98.7ms ease-in;
+        -webkit-transition: all 98.7ms ease-in;
+    width: 25px;
+    z-index: 1;
+}
+
 .main-content img.share-img-button::before{
     content: "";
 }
 
-.main-content img.share-img-button:hover{
+.main-content img.share-img-button:hover,
+.main-content .new-random-verse-img-button:hover{
     filter: invert(0.7);
 }
 
