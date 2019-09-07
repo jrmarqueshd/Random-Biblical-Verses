@@ -93,7 +93,13 @@ window.addEventListener("load", () => {
 
         generateRandomVerse();
 
-        $newRandomVerseButton.addEventListener("click", generateRandomVerse);
+        $newRandomVerseButton.addEventListener("click",()=>{
+            setClassToElement($newRandomVerseButton, "-animated");
+            setTimeout(()=>{
+                removeClassFromElement($newRandomVerseButton, "-animated");
+            }, 1000);
+            generateRandomVerse();
+        });
 
         $shareButton.forEach(element => {
             element.addEventListener("click", () => {
