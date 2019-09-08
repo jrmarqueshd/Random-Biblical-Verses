@@ -8,7 +8,7 @@
 
     --tag-background: rgba(255,255,255,1);
     --card-background: rgba(255,255,255, .9);
-    --header-card-card-background: rgba(255,255,255, .3);
+    --header-card-background: rgba(51,51,51, .3);
 
     --h1-background-color: linear-gradient(to bottom, var(--card-background) 50.3%, transparent 49.7%);
     --h1-border-color: transparent;
@@ -76,13 +76,17 @@ h3::-moz-selection {
 }
 
 body{
-    background-image: url("https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-image: url("../images/background-low.jpg");
     background-size: cover;
     background-color: var(--title-color);
     background-position: center center;
     background-repeat: no-repeat;
     height: auto;
         min-height: 100vh;
+}
+
+body.loaded{
+    background-image: url("../images/background.jpg");
 }
 
 body,
@@ -135,8 +139,8 @@ body section.main-content.card{
 }
 
 body section.main-content header{
-    background-color: var(--header-card-card-background);
-    filter: blur(3px);
+    background-color: var(--header-card-background);
+    /* filter: blur(3px); */
     height: auto;
     padding: 80px 0;
     width: 100%;

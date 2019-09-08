@@ -1,6 +1,7 @@
 "use strict";
 
 window.addEventListener("load", () => {
+    document.querySelector("body").classList.add("loaded");
     if (window.location.href == "https://www.versiculo.cf/random-verse.html" || window.location.href == "http://127.0.0.1:5500/random-verse.html") {
         let $abbrevBookContent = document.getElementById("abbrevBookContent");
         let $verseContent = document.getElementById("verseContent");
@@ -88,7 +89,7 @@ window.addEventListener("load", () => {
                                     setClassToElement($arrowNext, "off");
                                 }
                             }
-                            
+
                             $arrowNext.addEventListener("click", ()=>{
                                 nextVerse();
                             });
