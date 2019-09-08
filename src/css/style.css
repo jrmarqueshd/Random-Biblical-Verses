@@ -572,11 +572,11 @@ a.search-random-verse:hover{
     display: none;
 }
 
-.arrow-next{
+.arrow-next,
+.arrow-previous{
     cursor: pointer;
     opacity: 0.5;
     position: absolute;
-        right: 0.5em;
         bottom: 7em;
     transition: all 98.7ms ease-in;
         -moz-transition: all 98.7ms ease-in;
@@ -585,11 +585,22 @@ a.search-random-verse:hover{
     width: 30px;
 }
 
-.arrow-next.off{
+.arrow-next{
+    right: 0.5em;
+}
+
+.arrow-previous{
+    left: 0.5em;
+    transform: rotateY(180deg);
+}
+
+.arrow-next.off,
+.arrow-previous.off{
     display: none;
 }
 
-.arrow-next:hover{
+.arrow-next:hover,
+.arrow-previous:hover{
     opacity: 1;
 }
 
