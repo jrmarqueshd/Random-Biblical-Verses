@@ -78,6 +78,7 @@ h3::-moz-selection {
 body{
     background-image: url("https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
+    background-color: var(--title-color);
     background-position: center center;
     background-repeat: no-repeat;
     height: auto;

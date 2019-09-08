@@ -8,8 +8,9 @@ window.addEventListener("load", () => {
         let $capVerContent = document.getElementById("capVerContent");
         let $tagShare = document.getElementById("tagShare");
         let $arrowNext = document.getElementById("arrowNext");
+        let $arrowPrevious = document.getElementById("arrowPrevious");
 
-        $verseContent.innerHTML = '<div id="ldsDualRing" class="lds-dual-ring"></div>';
+        $verseContent.innerHTML = '<p id="verseContent" class="verse-content"><svg role="img" class="jss584" aria-label="" preserveAspectRatio="none"><rect x="0" y="0" width="100%" clip-path="url(#wx1f1a8h59)" style="fill: url(&quot;#1sj0x14jmdf&quot;);"></rect><defs><clipPath id="wx1f1a8h59"><rect x="0" y="10" rx="3" ry="3" width="390" height="10"></rect><rect x="0" y="35" rx="3" ry="3" width="370" height="10"></rect><rect x="0" y="60" rx="3" ry="3" width="180" height="10"></rect><rect x="0" y="100" rx="3" ry="3" width="380" height="10"></rect><rect x="0" y="125" rx="3" ry="3" width="390" height="10"></rect><rect x="0" y="150" rx="3" ry="3" width="320" height="10"></rect><rect x="0" y="190" rx="3" ry="3" width="390" height="10"></rect><rect x="0" y="215" rx="3" ry="3" width="380" height="10"></rect><rect x="0" y="240" rx="3" ry="3" width="290" height="10"></rect><rect x="0" y="265" rx="3" ry="3" width="220" height="10"></rect></clipPath><linearGradient id="1sj0x14jmdf"><stop offset="-2" stop-color="#cd853f" stop-opacity="1"><animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="-1" stop-color="#f5f6fa" stop-opacity="1"><animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="0" stop-color="#cd853f" stop-opacity="1"><animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop></linearGradient></defs></svg></p>';
 
         let $articleCard = document.getElementById("articleCard"),
             $fieldShare = document.getElementById("share"),
@@ -77,6 +78,7 @@ window.addEventListener("load", () => {
                             generateUrlsToShareButton(abbrev, verse, chapterNumber, verseNumber);
                             
                             arrowNext.addEventListener("click", ()=>{
+                                removeClassFromElement($arrowPrevious, "off");
                                 if(chapter[verseNumber] != undefined){
                                     $verseContent.innerText = chapter[verseNumber];
                                     $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
@@ -86,10 +88,28 @@ window.addEventListener("load", () => {
                                     setClassToElement($arrowNext, "off");
                                 }
                             });
+
+                            $arrowPrevious.addEventListener("click", ()=>{
+                                --verseNumber;
+                                if(verseNumber > 0){
+                                    $verseContent.innerText = chapter[--verseNumber];
+                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                }else{
+                                    setClassToElement($arrowPrevious, "off");
+                                    ++verseNumber;
+                                }
+                            });
                         }
                     });
                 });
         }
+
+        document.addEventListener('keypress', (event) => {
+            const keyName = event.key;
+          
+            alert('keypress event\n\n' + 'key: ' + keyName);
+          });
 
         generateRandomVerse();
 
