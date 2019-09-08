@@ -77,39 +77,48 @@ window.addEventListener("load", () => {
                             showFieldShare(setTimeNecessarilyToReadVerse);
                             generateUrlsToShareButton(abbrev, verse, chapterNumber, verseNumber);
                             
-                            arrowNext.addEventListener("click", ()=>{
-                                removeClassFromElement($arrowPrevious, "off");
-                                if(chapter[verseNumber] != undefined){
-                                    $verseContent.innerText = chapter[verseNumber];
-                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
-                                    
-                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
-                                }else{
-                                    setClassToElement($arrowNext, "off");
+                            $arrowNext.addEventListener("click", ()=>{
+                                function nextVerse(){
+                                    removeClassFromElement($arrowPrevious, "off");
+                                    if(chapter[verseNumber] != undefined){
+                                        $verseContent.innerText = chapter[verseNumber];
+                                        $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                                        
+                                        generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                    }else{
+                                        setClassToElement($arrowNext, "off");
+                                    }
                                 }
+                                nextVerse();
                             });
 
                             $arrowPrevious.addEventListener("click", ()=>{
-                                --verseNumber;
-                                if(verseNumber > 0){
-                                    $verseContent.innerText = chapter[--verseNumber];
-                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
-                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
-                                }else{
-                                    setClassToElement($arrowPrevious, "off");
-                                    ++verseNumber;
+                                function previousVerse(){
+                                    removeClassFromElement($arrowNext, "off");
+                                    --verseNumber;
+                                    if(verseNumber > 0){
+                                        $verseContent.innerText = chapter[--verseNumber];
+                                        $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                                        generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                    }else{
+                                        setClassToElement($arrowPrevious, "off");
+                                        ++verseNumber;
+                                    }
+                                }
+                                previousVerse();
+                            });
+
+                            document.addEventListener("keydown", (b)=>{
+                                if(b.key == "ArrowRight"){
+                                    $arrowNext.click();
+                                }else if(b.key == "ArrowLeft"){
+                                    $arrowPrevious.click();
                                 }
                             });
                         }
                     });
                 });
         }
-
-        document.addEventListener('keypress', (event) => {
-            const keyName = event.key;
-          
-            alert('keypress event\n\n' + 'key: ' + keyName);
-          });
 
         generateRandomVerse();
 
