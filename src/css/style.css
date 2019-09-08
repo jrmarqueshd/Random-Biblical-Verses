@@ -551,28 +551,6 @@ a.search-random-verse:hover{
     opacity: 0;
 }
 
-.lds-dual-ring {
-    display: inline-block;
-    width: 64px;
-    height: 64px;
-}
-
-.lds-dual-ring:after {
-    animation: lds-dual-ring 987ms linear infinite;
-    border-radius: 50%;
-    border: 5px solid var(--selected-color);
-    border-color: var(--selected-color) transparent var(--selected-color) transparent;
-    content: " ";
-    display: block;
-    height: 46px;
-    margin: 1px;
-    width: 46px;
-}
-
-.lds-dual-ring.off{
-    display: none;
-}
-
 .arrow-next,
 .arrow-previous{
     cursor: pointer;
@@ -603,20 +581,4 @@ a.search-random-verse:hover{
 .arrow-next:hover,
 .arrow-previous:hover{
     opacity: 1;
-}
-
-@keyframes lds-dual-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
-@media screen and (max-width: 400px){
-    article {
-        padding: 15px 15px 25px;
-    }
 }

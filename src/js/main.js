@@ -77,34 +77,36 @@ window.addEventListener("load", () => {
                             showFieldShare(setTimeNecessarilyToReadVerse);
                             generateUrlsToShareButton(abbrev, verse, chapterNumber, verseNumber);
                             
-                            $arrowNext.addEventListener("click", ()=>{
-                                function nextVerse(){
-                                    removeClassFromElement($arrowPrevious, "off");
-                                    if(chapter[verseNumber] != undefined){
-                                        $verseContent.innerText = chapter[verseNumber];
-                                        $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
-                                        
-                                        generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
-                                    }else{
-                                        setClassToElement($arrowNext, "off");
-                                    }
+                            function nextVerse(){
+                                removeClassFromElement($arrowPrevious, "off");
+                                if(chapter[verseNumber] != undefined){
+                                    $verseContent.innerText = chapter[verseNumber];
+                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                                    
+                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                }else{
+                                    setClassToElement($arrowNext, "off");
                                 }
+                            }
+                            
+                            $arrowNext.addEventListener("click", ()=>{
                                 nextVerse();
                             });
 
-                            $arrowPrevious.addEventListener("click", ()=>{
-                                function previousVerse(){
-                                    removeClassFromElement($arrowNext, "off");
-                                    --verseNumber;
-                                    if(verseNumber > 0){
-                                        $verseContent.innerText = chapter[--verseNumber];
-                                        $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
-                                        generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
-                                    }else{
-                                        setClassToElement($arrowPrevious, "off");
-                                        ++verseNumber;
-                                    }
+                            function previousVerse(){
+                                removeClassFromElement($arrowNext, "off");
+                                --verseNumber;
+                                if(verseNumber > 0){
+                                    $verseContent.innerText = chapter[--verseNumber];
+                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                }else{
+                                    setClassToElement($arrowPrevious, "off");
+                                    ++verseNumber;
                                 }
+                            }
+
+                            $arrowPrevious.addEventListener("click", ()=>{
                                 previousVerse();
                             });
 
