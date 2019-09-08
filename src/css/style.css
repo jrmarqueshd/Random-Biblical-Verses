@@ -506,8 +506,8 @@ a.search-random-verse:hover{
     content: "";
 }
 
-.main-content img.share-img-button:hover,
-.main-content .new-random-verse-img-button:hover{
+.main-content img.share-img-button:active,
+.main-content .new-random-verse-img-button:active{
     filter: invert(0.7);
 }
 
