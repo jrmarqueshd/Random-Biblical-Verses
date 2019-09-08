@@ -5,7 +5,7 @@ Desenvolvido e mantido por [Junior Marques](https://github.com/jrmarqueshd)
 
 Versão: 1.0.0
 
-Tipo de licença: [MIT](##Sobre-a-licença)
+Tipo de licença: [MIT](#Sobre-a-licença)
 
 
 ## Tecnologias utilizadas no processo de desenvolvimento
