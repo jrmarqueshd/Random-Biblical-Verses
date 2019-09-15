@@ -22,6 +22,9 @@ Tipo de licença: [MIT](#Sobre-a-licença)
 - Gulp para minificar(HTML, CSS, JavaScript, JSON);
 - Gulp para verificar erros no JavaScript;
 
+### - Deploy
+
+- Netlify
 
 ## Agradecimentos
 
