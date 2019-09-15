@@ -130,7 +130,8 @@ window.addEventListener("load", () => {
             setTimeout(()=>{
                 removeClassFromElement($newRandomVerseButton, "-animated");
             }, 1000);
-            generateRandomVerse();
+            
+            window.location.reload(true);
         });
 
         $shareButton.forEach(element => {
