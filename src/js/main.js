@@ -54,74 +54,74 @@ window.addEventListener("load", () => {
             }, interval);
         }
 
-        // async function generateRandomVerse(){
-        //     await fetch("../assets/data/bible.json")
-        //         .then(myJson => myJson.json())
-        //         .then(resp=>{
-        //             var livro = resp[setRandomValue((resp.length - 1))];
-        //             [].forEach.call(resp, (e)=>{
-        //                 if(e.abbrev == livro.abbrev){
-        //                     let abbrev = e.abbrev;
-        //                     let name = e.name;
-        //                     let chapterNumber = setRandomValue((e.chapters.length - 1));
-        //                     let chapter = e.chapters[chapterNumber];
-        //                     let verseNumber = setRandomValue((chapter.length - 1));
-        //                     let verse = chapter[verseNumber];
-        //                     let setTimeNecessarilyToReadVerse = ((verse.length / timeInMsToReadChar) * 1000);
+        async function generateRandomVerse(){
+            await fetch("../assets/data/bible.json")
+                .then(myJson => myJson.json())
+                .then(resp=>{
+                    var livro = resp[setRandomValue((resp.length - 1))];
+                    [].forEach.call(resp, (e)=>{
+                        if(e.abbrev == livro.abbrev){
+                            let abbrev = e.abbrev;
+                            let name = e.name;
+                            let chapterNumber = setRandomValue((e.chapters.length - 1));
+                            let chapter = e.chapters[chapterNumber];
+                            let verseNumber = setRandomValue((chapter.length - 1));
+                            let verse = chapter[verseNumber];
+                            let setTimeNecessarilyToReadVerse = ((verse.length / timeInMsToReadChar) * 1000);
 
-        //                     $abbrevBookContent.innerText = abbrev;
-        //                     $bookContent.innerText = name;
-        //                     $verseContent.innerText = verse;
-        //                     $capVerContent.innerText = `${++chapterNumber}:${++verseNumber}`;
+                            $abbrevBookContent.innerText = abbrev;
+                            $bookContent.innerText = name;
+                            $verseContent.innerText = verse;
+                            $capVerContent.innerText = `${++chapterNumber}:${++verseNumber}`;
 
-        //                     removeClassFromElement($arrowNext, "off");
-        //                     showFieldShare(setTimeNecessarilyToReadVerse);
-        //                     generateUrlsToShareButton(abbrev, verse, chapterNumber, verseNumber);
+                            removeClassFromElement($arrowNext, "off");
+                            showFieldShare(setTimeNecessarilyToReadVerse);
+                            generateUrlsToShareButton(abbrev, verse, chapterNumber, verseNumber);
                             
-        //                     function nextVerse(){
-        //                         removeClassFromElement($arrowPrevious, "off");
-        //                         if(chapter[verseNumber] != undefined){
-        //                             $verseContent.innerText = chapter[verseNumber];
-        //                             $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                            function nextVerse(){
+                                removeClassFromElement($arrowPrevious, "off");
+                                if(chapter[verseNumber] != undefined){
+                                    $verseContent.innerText = chapter[verseNumber];
+                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
                                     
-        //                             generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
-        //                         }else{
-        //                             setClassToElement($arrowNext, "off");
-        //                         }
-        //                     }
+                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                }else{
+                                    setClassToElement($arrowNext, "off");
+                                }
+                            }
 
-        //                     $arrowNext.addEventListener("click", ()=>{
-        //                         nextVerse();
-        //                     });
+                            $arrowNext.addEventListener("click", ()=>{
+                                nextVerse();
+                            });
 
-        //                     function previousVerse(){
-        //                         removeClassFromElement($arrowNext, "off");
-        //                         --verseNumber;
-        //                         if(verseNumber > 0){
-        //                             $verseContent.innerText = chapter[--verseNumber];
-        //                             $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
-        //                             generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
-        //                         }else{
-        //                             setClassToElement($arrowPrevious, "off");
-        //                             ++verseNumber;
-        //                         }
-        //                     }
+                            function previousVerse(){
+                                removeClassFromElement($arrowNext, "off");
+                                --verseNumber;
+                                if(verseNumber > 0){
+                                    $verseContent.innerText = chapter[--verseNumber];
+                                    $capVerContent.innerText = `${chapterNumber}:${++verseNumber}`;
+                                    generateUrlsToShareButton(abbrev, chapter[verseNumber], chapterNumber, verseNumber);
+                                }else{
+                                    setClassToElement($arrowPrevious, "off");
+                                    ++verseNumber;
+                                }
+                            }
 
-        //                     $arrowPrevious.addEventListener("click", ()=>{
-        //                         previousVerse();
-        //                     });
+                            $arrowPrevious.addEventListener("click", ()=>{
+                                previousVerse();
+                            });
 
-        //                     document.addEventListener("keydown", (b)=>{
-        //                         if(b.key == "ArrowRight"){
-        //                             $arrowNext.click();
-        //                         }else if(b.key == "ArrowLeft"){
-        //                             $arrowPrevious.click();
-        //                         }
-        //                     });
-        //                 }
-        //             });
-        //         });
-        // }
+                            document.addEventListener("keydown", (b)=>{
+                                if(b.key == "ArrowRight"){
+                                    $arrowNext.click();
+                                }else if(b.key == "ArrowLeft"){
+                                    $arrowPrevious.click();
+                                }
+                            });
+                        }
+                    });
+                });
+        }
 
         generateRandomVerse();
 
@@ -131,7 +131,9 @@ window.addEventListener("load", () => {
                 removeClassFromElement($newRandomVerseButton, "-animated");
             }, 1000);
             
-            window.location.reload(true);
+            setTimeout(()=>{
+                window.location.reload(true);
+            }, 1000);
         });
 
         $shareButton.forEach(element => {
