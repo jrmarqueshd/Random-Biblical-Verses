@@ -244,6 +244,10 @@ article p.verse-content{
         -webkit-transition: all 987ms ease-out;
 }
 
+article p.verse-content > svg{
+    width: 100%;
+}
+
 article h2,
 article h3{
     display: inline-block;
