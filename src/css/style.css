@@ -75,7 +75,7 @@ h3::-moz-selection {
     color: var(--selected-color);
 }
 
-body{
+body.body-card{
     background-image: url("../images/background-low.jpg");
     background-size: cover;
     background-color: var(--title-color);
@@ -85,13 +85,13 @@ body{
         min-height: 100vh;
 }
 
-body.loaded{
+body.body-card.loaded{
     background-image: url("../images/background.jpg");
 }
 
-body,
-body section.main-content,
-body section.main-content article h1,
+body.body-card,
+body.body-card section.main-content,
+body.body-card section.main-content article h1,
 article,
 .share{
     display: flex;
@@ -99,16 +99,16 @@ article,
         display: -ms-flexbox;
 }
 
-body,
-body section.main-content article h1,
+body.body-card,
+body.body-card section.main-content article h1,
 article,
 .share{
     align-items: center;
     justify-content: center;
 }
 
-body section.main-content,
-body section.main-content article h1,
+body.body-card section.main-content,
+body.body-card section.main-content article h1,
 article,
 .share img{
     box-sizing: border-box;
@@ -116,14 +116,14 @@ article,
         -moz-box-sizing: border-box;
 }
 
-body section.main-content,
+body.body-card section.main-content,
 article,
 .share{
     flex-wrap: wrap;
         -ms-flex-wrap: wrap;
 }
 
-body section.main-content{
+body.body-card section.main-content{
     height: auto;
         min-height: 525px;
     margin: 15px;
@@ -132,13 +132,13 @@ body section.main-content{
         max-width: var(--card-width);
 }
 
-body section.main-content.card{
+body.body-card section.main-content.card{
     border-radius: 7px;
     box-shadow: 0 0 30px 0 var(--shadow-card-color);
     overflow-x: hidden;
 }
 
-body section.main-content header{
+body.body-card section.main-content header{
     background-color: var(--header-card-background);
     /* filter: blur(3px); */
     height: auto;
@@ -178,7 +178,7 @@ article > *{
     width: 100%;
 }
 
-body section.main-content article h1{
+body.body-card section.main-content article h1{
     background-image: var(--h1-background-color);
     border: 1px solid var(--h1-border-color);
     border-radius: 100%;
@@ -590,3 +590,204 @@ a.search-random-verse:hover{
 .arrow-previous:hover{
     opacity: 1;
 }
+
+/* Home */
+
+@keyframes cloudAnimation{
+    from{
+        background-position: 300px 0, 600px 0;
+    }
+    to{
+        background-position: 1000px 0, 1600px 0;
+    }
+}
+@-o-keyframes cloudAnimation{
+    from{
+        background-position: 300px 0, 600px 0;
+    }
+    to{
+        background-position: 1000px 0, 1600px 0;
+    }
+}
+@-moz-keyframes cloudAnimation{
+    from{
+        background-position: 300px 0, 600px 0;
+    }
+    to{
+        background-position: 1000px 0, 1600px 0;
+    }
+}
+@-moz-keyframes cloudAnimation{
+    from{
+        background-position: 300px 0, 600px 0;
+    }
+    to{
+        background-position: 1000px 0, 1600px 0;
+    }
+}
+
+@keyframes fadeText{
+    from{
+        text-indent: -100%;
+    }
+    to{
+        text-indent: 0;
+    }
+}
+@-o-keyframes fadeText{
+    from{
+        text-indent: -100%;
+    }
+    to{
+        text-indent: 0;
+    }
+}
+@-moz-keyframes fadeText{
+    from{
+        text-indent: -100%;
+    }
+    to{
+        text-indent: 0;
+    }
+}
+@-moz-keyframes fadeText{
+    from{
+        text-indent: -100%;
+    }
+    to{
+        text-indent: 0;
+    }
+}
+
+@keyframes opacityText{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-o-keyframes opacityText{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-moz-keyframes opacityText{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@-moz-keyframes opacityText{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes animateScrollIcon{
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 1em;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+@-o-keyframes animateScrollIcon{
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 1em;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+@-moz-keyframes animateScrollIcon{
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 1em;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+@-moz-keyframes animateScrollIcon{
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 1em;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+
+body.home{
+    background-image: url("../images/sky-bgc.jpg");
+    background-position-y: bottom;
+    height: 1334px;
+}
+
+body.home header.cloud-intro{
+    animation: cloudAnimation 60s linear infinite;
+    font-family: var(--title-font);
+    background-color: blue;
+    background: url("../images/nuvens.png") 0 150px;
+    background: url("../images/nuvens2.png") 0 200px,
+                url("../images/nuvens3.png") 0 300px,
+                url("../images/nuvensBlur.png") 100px 250px;
+    display: flex;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+                -ms-flex-direction: column;
+    height: 100vh;
+    margin: 0 auto;
+    overflow-x: hidden;
+    width: 100%;
+        max-width: 1920px;
+}
+
+body.home header.cloud-intro h1,
+body.home header.cloud-intro h3{
+    font-family: inherit;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+
+body.home header.cloud-intro h1{
+    animation: fadeText 987ms cubic-bezier(0.65, -0.15, 0.65, 1.32) backwards;
+    font-size: 5em;
+}
+
+body.home header.cloud-intro h3{
+    animation: opacityText 987ms 1s ease-in-out backwards;
+    font-size: 2em;
+}
+
+body.home header.cloud-intro .scroll-icon{
+    animation: animateScrollIcon 1987ms 2s ease infinite backwards;
+    cursor: pointer;
+    position: absolute;
+        bottom: 0;
+    width: 2em;
+}
+

@@ -36,7 +36,9 @@ Tipo de licença: [MIT](#Sobre-a-licença)
 
 - loading.io - Pelo dual ring loading;
 
-- freepik.com/jcomp - Pela image de background desta versão.
+- freepik.com/jcomp - Pela image de background desta versão;
+
+- codepen.io/valentin - Pela animação de nuvem.
 
 ## Sobre a licença
 
