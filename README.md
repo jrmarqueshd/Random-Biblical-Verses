@@ -3,9 +3,14 @@ _Esse é um projeto criado somente para estudo!_
 
 Desenvolvido e mantido por [Junior Marques](https://github.com/jrmarqueshd)
 
-Versão: 1.0.0
+Versão: 2.0.0
 
 Tipo de licença: [MIT](#Sobre-a-licença)
+
+## Release
+
+- Home page criada;
+- Algumas melhorias na página do versículo.
 
 
 ## Tecnologias utilizadas no processo de desenvolvimento
