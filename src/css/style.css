@@ -4,7 +4,7 @@
     --content-color_with_opacity: rgba(107,107,107,0.5);
     --background-color: rgba(255,255,255, .7);
 
-    --selected-color: peru;
+    --selected-color: #051C50;
 
     --tag-background: rgba(255,255,255,1);
     --card-background: rgba(255,255,255, .9);
@@ -61,7 +61,8 @@ p::selection,
 span::selection,
 h1::selection,
 h2::selection,
-h3::selection {
+h3::selection,
+h4::selection {
     background: transparent;
     color: var(--selected-color);
 }
@@ -270,19 +271,6 @@ article.off h3{
         -moz-transition: color 987ms ease-in;
         -o-transition: color 987ms ease-in;
         -webkit-transition: color 987ms ease-in;
-}
-
-a.search-random-verse{
-    background-color: white;
-    padding: 15px 25px;
-    border-radius: 30px;
-    color: var(--selected-color);
-    transition: all 98.7ms ease-in;
-}
-
-a.search-random-verse:hover{
-    background-color: var(--selected-color);
-    color: white;
 }
 
 @keyframes onShare{
@@ -740,7 +728,7 @@ a.search-random-verse:hover{
 body.home{
     background-image: url("../images/sky-bgc.jpg");
     background-position-y: bottom;
-    height: 1334px;
+    height: 100%;
 }
 
 body.home header.cloud-intro{
@@ -767,6 +755,7 @@ body.home header.cloud-intro{
 
 body.home header.cloud-intro h1,
 body.home header.cloud-intro h3{
+    color: var(--selected-color);
     font-family: inherit;
     text-transform: uppercase;
     text-align: center;
@@ -791,3 +780,61 @@ body.home header.cloud-intro .scroll-icon{
     width: 2em;
 }
 
+body.home .content{
+    box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    display: flex;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+                -ms-flex-direction: column;
+    padding-top: 4em;
+    height: 100vh;
+}
+
+body.home .content h3,
+body.home .content h4{
+    color: var(--tag-background);
+    padding-top: 5px;
+}
+
+body.home .content h3{
+    font-size: 2em;
+}
+
+body.home a.search-random-verse{
+    background-color: var(--tag-background);
+    padding: 15px 25px;
+    border-radius: 30px;
+    color: var(--selected-color);
+    transition: all 98.7ms ease-in;
+    margin-top: 50px;
+}
+
+body.home .search-random-verse:hover{
+    background-color: var(--selected-color);
+    color: var(--tag-background);
+}
+
+footer{
+    background-color: var(--selected-color);
+    padding: 40px 15px;
+    text-align: center;
+    color: var(--tag-background);
+}
+
+footer a,
+footer span{
+    color: inherit;
+    transition: all 98.7ms linear;
+        -moz-transition: all 98.7ms linear;
+        -o-transition: all 98.7ms linear;
+        -webkit-transition: all 98.7ms linear;
+}
+
+footer a:hover{
+    color: #7C51AB;
+}
