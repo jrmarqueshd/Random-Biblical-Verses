@@ -757,6 +757,7 @@ body.home header.cloud-intro h1,
 body.home header.cloud-intro h3{
     color: var(--selected-color);
     font-family: inherit;
+    padding: 0 15px;
     text-transform: uppercase;
     text-align: center;
     width: 100%;
@@ -798,7 +799,8 @@ body.home .content{
 body.home .content h3,
 body.home .content h4{
     color: var(--tag-background);
-    padding-top: 5px;
+    text-align: center;
+    padding: 5px 15px;
 }
 
 body.home .content h3{
@@ -821,9 +823,9 @@ body.home .search-random-verse:hover{
 
 footer{
     background-color: var(--selected-color);
+    color: var(--tag-background);
     padding: 40px 15px;
     text-align: center;
-    color: var(--tag-background);
 }
 
 footer a,
@@ -837,4 +839,21 @@ footer span{
 
 footer a:hover{
     color: #7C51AB;
+}
+
+@media screen and (max-width: 991px){
+    body.home header.cloud-intro h1 {
+        font-size: 4em;
+    }
+    
+    body.home header.cloud-intro h3{
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 475px){
+    body.home header.cloud-intro h1 {
+        font-size: 3em;
+        max-width: 475px;
+    }
 }
