@@ -141,7 +141,6 @@ body.body-card section.main-content.card{
 
 body.body-card section.main-content header{
     background-color: var(--header-card-background);
-    /* filter: blur(3px); */
     height: auto;
     padding: 80px 0;
     width: 100%;
@@ -616,34 +615,34 @@ article.off h3{
 
 @keyframes fadeText{
     from{
-        text-indent: -100%;
+        margin-left: -100%;
     }
     to{
-        text-indent: 0;
+        margin-left: 0;
     }
 }
 @-o-keyframes fadeText{
     from{
-        text-indent: -100%;
+        margin-left: -100%;
     }
     to{
-        text-indent: 0;
+        margin-left: 0;
     }
 }
 @-moz-keyframes fadeText{
     from{
-        text-indent: -100%;
+        margin-left: -100%;
     }
     to{
-        text-indent: 0;
+        margin-left: 0;
     }
 }
 @-moz-keyframes fadeText{
     from{
-        text-indent: -100%;
+        margin-left: -100%;
     }
     to{
-        text-indent: 0;
+        margin-left: 0;
     }
 }
 
@@ -682,46 +681,46 @@ article.off h3{
 
 @keyframes animateScrollIcon{
     0%{
-        bottom: 0;
+        margin-bottom: 0;
     }
     50%{
-        bottom: 1em;
+        margin-bottom: 1em;
     }
     100%{
-        bottom: 0;
+        margin-bottom: 0;
     }
 }
 @-o-keyframes animateScrollIcon{
     0%{
-        bottom: 0;
+        margin-bottom: 0;
     }
     50%{
-        bottom: 1em;
+        margin-bottom: 1em;
     }
     100%{
-        bottom: 0;
+        margin-bottom: 0;
     }
 }
 @-moz-keyframes animateScrollIcon{
     0%{
-        bottom: 0;
+        margin-bottom: 0;
     }
     50%{
-        bottom: 1em;
+        margin-bottom: 1em;
     }
     100%{
-        bottom: 0;
+        margin-bottom: 0;
     }
 }
 @-moz-keyframes animateScrollIcon{
     0%{
-        bottom: 0;
+        margin-bottom: 0;
     }
     50%{
-        bottom: 1em;
+        margin-bottom: 1em;
     }
     100%{
-        bottom: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -729,6 +728,10 @@ body.home{
     background-image: url("../images/sky-bgc.jpg");
     background-position-y: bottom;
     height: 100%;
+}
+
+body.home header{
+    position: relative;
 }
 
 body.home header.cloud-intro{
@@ -753,7 +756,7 @@ body.home header.cloud-intro{
         max-width: 1920px;
 }
 
-body.home header.cloud-intro h1,
+.cloud-intro h1,
 body.home header.cloud-intro h3{
     color: var(--selected-color);
     font-family: inherit;
@@ -766,6 +769,7 @@ body.home header.cloud-intro h3{
 body.home header.cloud-intro h1{
     animation: fadeText 987ms cubic-bezier(0.65, -0.15, 0.65, 1.32) backwards;
     font-size: 5em;
+    max-width: 676px;
 }
 
 body.home header.cloud-intro h3{
@@ -773,11 +777,18 @@ body.home header.cloud-intro h3{
     font-size: 2em;
 }
 
-body.home header.cloud-intro .scroll-icon{
-    animation: animateScrollIcon 1987ms 2s ease infinite backwards;
-    cursor: pointer;
+
+body.home header.cloud-intro a{
     position: absolute;
         bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+body.home header.cloud-intro .scroll-icon{
+    animation: animateScrollIcon 1987ms 2s ease infinite backwards;
+        -webkit-animation: animateScrollIcon 1987ms 2s ease infinite backwards;
+    cursor: pointer;
     width: 2em;
 }
 
